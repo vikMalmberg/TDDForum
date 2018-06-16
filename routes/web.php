@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/threads','threadsController@index');
+Route::get('/threads/{thread}','threadsController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

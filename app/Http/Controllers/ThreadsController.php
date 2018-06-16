@@ -14,7 +14,10 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        return "123";
+        $threads = Thread::latest()->get();
+
+        return view('threads.index',['threads' => $threads]);
+
     }
 
     /**
@@ -46,7 +49,8 @@ class ThreadsController extends Controller
      */
     public function show(Thread $thread)
     {
-        //
+        return view('threads.show', ['thread' => $thread]);
+
     }
 
     /**
