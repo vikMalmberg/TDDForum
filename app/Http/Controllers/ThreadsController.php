@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->only('store');
@@ -21,8 +20,7 @@ class ThreadsController extends Controller
     {
         $threads = Thread::latest()->get();
 
-        return view('threads.index',['threads' => $threads]);
-
+        return view('threads.index', ['threads' => $threads]);
     }
 
     /**
@@ -60,7 +58,6 @@ class ThreadsController extends Controller
     public function show(Thread $thread)
     {
         return view('threads.show', ['thread' => $thread]);
-
     }
 
     /**

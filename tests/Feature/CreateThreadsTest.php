@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-Use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CreateThreadsTest extends TestCase
 {
@@ -11,26 +11,24 @@ class CreateThreadsTest extends TestCase
 
 
     /** @test */
-    function guests_may_not_create_threads()
+    public function guests_may_not_create_threads()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        $thread = factory('App\Thread')->make();
+        $thread = make('App\Thread');
 
-        $this->post('/threads',$thread->toArray());
+        $this->post('/threads', $thread->toArray());
     }
 
     /** @test */
-    function an_authenticated_user_can_create_new_forum_threads()
+    public function an_authenticated_user_can_create_new_forum_threads()
     {
-        $this->actingAs(factory('App\User')->create());
+        $this->actingAs(create('App\User'));
 
         $thread = factory('App\Thread')->make();
 
-        $this->post('/threads',$thread->toArray());
+        $this->post('/threads', $thread->toArray());
 
         $response = $this->get($thread->path());
         $response->assertSee($thread->title);
-
     }
-
 }
