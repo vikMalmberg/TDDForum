@@ -14,11 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/threads','threadsController@index');
-Route::post('/threads/','threadsController@store');
-Route::get('/threads/{thread}','threadsController@show');
+// the same as all the resourceful routes ( create edit etc)
+Route::resource('threads','threadsController');
 Route::post('/threads/{thread}/replies','RepliesController@store');
+
 
 Auth::routes();
 
