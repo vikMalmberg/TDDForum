@@ -14,9 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// the same as all the resourceful routes ( create edit etc)
-Route::resource('threads','threadsController');
-Route::post('/threads/{thread}/replies','RepliesController@store');
+
+Route::get('/home','HomeController@index');
+Route::get('threads','ThreadsController@index');
+Route::get('threads/create','ThreadsController@create');
+Route::get('threads/{channel}/{thread}','ThreadsController@show');
+Route::post('threads','ThreadsController@store');
+Route::post('/threads/{channel}/{thread}/replies','RepliesController@store');
 
 
 Auth::routes();
