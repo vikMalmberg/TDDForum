@@ -33,7 +33,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav">
-                    <li class="mr-4"><a href="/threads">All Threads</a></li>
+                    <li class="mr-4">
+                        <a href="/threads">All Threads</a>
+                    </li>
+
+
+                    <li class ="mr-4">
+                        <a href="/threads/create">New Thread</a>
+                    </li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -45,6 +52,7 @@
                             @endforeach
                         </ul>
                     </li>
+
                 </ul>
 
                     <!-- Right Side Of Navbar -->
