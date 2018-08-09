@@ -30,12 +30,22 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                    <!-- Left side -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav">
-                    <li class="mr-4">
-                        <a href="/threads">All Threads</a>
+
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle mr-4" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Browse <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            <li> <a href="/threads"> All threads</a></li>
+                            @if(auth()->check())
+                            <li> <a href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                            @endif
+                        </ul>
                     </li>
+
 
 
                     <li class ="mr-4">
