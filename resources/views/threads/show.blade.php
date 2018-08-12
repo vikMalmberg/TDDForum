@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$thread->title}}</div>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-       <div class="row justify-content-center">
+       <div class="row ">
         <div class="col-md-8 col-md-offset">
             @foreach ($thread->replies as $reply)
              <div class="card-header mt-4">
@@ -44,6 +44,9 @@
                     </div>
                 </div>
             @endif
+
+            <h1>{{$thread->created_at->diffForHumans()}}</h1>
+            <h1>{{$thread->replies_count}} {{str_plural('comment', $thread->replies_count)}}</h1>
 
         </div>
     </div>
