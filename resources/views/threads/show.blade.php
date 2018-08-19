@@ -19,9 +19,23 @@
         <div class="col-md-8 col-md-offset">
             @foreach ($thread->replies as $reply)
              <div class="card-header mt-4">
-                <span class = text-primary>{{$reply->owner->name}}</span>
-                 said {{$reply->created_at->diffForHumans()}}
+                <div class="level">
+                    <h5 class="flex">
+                        <span class = text-primary>{{$reply->owner->name}}</span>
+                        said {{$reply->created_at->diffForHumans()}}
+                    </h5>
+                    <div>
 
+                       <form method="POST" action="/replies/{{ $reply->id }}/favorites">
+
+                    {{ csrf_field() }}
+
+                    <button type="submit" class="btn btn-default" {{ $reply->isFavorited() ? 'disabled' : '' }}>
+                        {{ $reply->favorites()->count() }} {{ str_plural('Favorite', $reply->favorites()->count()) }}
+                    </button>
+                </form>
+                    </div>
+                </div>
              </div>
             <div class="card ">
                 <div class="card-body">
