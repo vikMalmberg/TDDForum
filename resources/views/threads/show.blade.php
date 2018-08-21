@@ -5,11 +5,17 @@
     <div class="row ">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$thread->title}}</div>
+                <div class="card-header">
+                    {{$thread->title}}
+                    <a href="{{ route('profile',$thread->creator->name) }}">{{ $thread->creator->name }}</a>
+
+                </div>
 
                 <div class="card-body">
                         <div class="panel-body">
+
                             {{$thread->body}}
+
                         </div>
                 </div>
             </div>
@@ -22,8 +28,12 @@
              <div class="card-header mt-4">
                 <div class="level">
                     <h5 class="flex">
-                        <span class = text-primary>{{$reply->owner->name}}</span>
-                        said {{$reply->created_at->diffForHumans()}}
+                        <a href="{{ route('profile',$reply->owner) }}">
+                            {{$reply->owner->name}}
+                        </a>
+
+
+                        <span>said {{$reply->created_at->diffForHumans()}}</span>
                     </h5>
                     <div>
 
