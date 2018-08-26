@@ -13,11 +13,13 @@
                         </a>
 
                     </span>
+                    @can('update',$thread)
                     <form action="{{ $thread->path() }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                          <button type="submit">Delete</button>
                     </form>
+                    @endcan
                 </div>
 
                 <div class="card-body">

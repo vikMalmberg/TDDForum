@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-                    @foreach($threads as  $thread)
+                    @forelse($threads as  $thread)
             <div class="card">
                 <div class="card-header">
                     <div class="level">
@@ -22,7 +22,10 @@
                     <hr>
                 </div>
             </div>
-                    @endforeach
+                    @empty
+                    <h1>There are no threads on this channel.</h1>
+
+                    @endforelse
 
         </div>
     </div>

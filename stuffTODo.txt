@@ -1,0 +1,4 @@
+1 - switch foreach to forelse incase of no threads on specific channel
+2- switch guests cant delete therads -> unauthorized people can not remove threads
+3- Use policy to check if user has permission
+4 - hide delete button if user cant use it
