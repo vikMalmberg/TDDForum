@@ -10,20 +10,12 @@
                  <small> Since {{ $profileUser->created_at->diffForHumans() }}</small>
             </h1>
         </div>
-        @foreach($threads as $thread)
-        <div class="card">
-            <div class="card-header">
-                {{$thread->title}}
-                {{ $thread->created_at->diffForHumans() }}
-            </div>
-             <div class="card-body">
-                    <div class="panel-body">
-                        {{$thread->body}}
-                    </div>
-              </div>
-        </div>
+        @foreach($activities as $date => $activity)
+            <h3 class="page-header">{{ $date }}</h3>
+            @foreach($activity as $record)
+                @include("profiles.activities.$record->type", ['activity' => $record])
+            @endforeach
         @endforeach
-            {{$threads->links()}}
 
             </div>
         </div>
