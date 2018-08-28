@@ -19,7 +19,7 @@ class RepliesController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return back();
+        return back()->with('flash', 'a b c.');
 
     }
 }
