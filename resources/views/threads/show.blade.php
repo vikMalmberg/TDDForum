@@ -36,7 +36,7 @@
         <div class="col-md-8 col-md-offset">
             @foreach ($thread->replies as $reply)
 
-             <div class="card-header mt-4">
+             <div id="reply-{{ $reply->id }}" class="card-header mt-4">
                 <div class="level">
                     <h5 class="flex">
                         <a href="{{ route('profile',$reply->owner) }}">
