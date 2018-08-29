@@ -41,6 +41,11 @@ if (token) {
 
 window.events = new Vue();
 
+// the .flash means that i can call flash in any vue
+
 window.flash = function(message){
+    // and it will emit the 'flash' => linked to component
+    // with the message of the flash() one in the other vue component
     window.events.$emit('flash' , message)
-};  // flash the new message
+
+};

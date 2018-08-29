@@ -58,8 +58,35 @@ class ParticipateInForumTest extends TestCase
         $this->delete("/replies/$reply->id")->assertStatus(302);
         // confirm it doesnt exist in db
         $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
+    }
 
+    /** @test */
+    public function unauthorized_users_cannot_update_replies()
+    {
+        $this->withExceptionHandling();
+        $reply = create('App\Reply');
 
+        $updatedReply ="updated reply";
+
+        $this->patch("/replies/$reply->id")
+             ->assertRedirect('/login');
+
+        $this->signIn()
+              ->patch("/replies/$reply->id")
+              ->assertStatus(403);
+    }
+
+    /** @test */
+    public function authorized_users_can_update_replies()
+    {
+        $this->signIn();
+
+        $reply = create('App\Reply',['user_id' => auth()->id()]);
+
+        $updatedReply = 'Check this update out';
+        $this->patch("/replies/$reply->id",['body' => $updatedReply]);
+
+        $this->assertDatabaseHas('replies', [ 'id' => $reply->id, 'body' => $updatedReply]);
     }
 
 
