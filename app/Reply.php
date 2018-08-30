@@ -10,7 +10,13 @@ class Reply extends Model
     use RecordsActivity;
 
     protected $guarded =[];
+
     protected $with =['owner','favorites'];
+
+    // when i cast this model to array or json
+    // appends any attributes i want here
+    protected $appends = ['favoritesCount','isFavorited'];
+
 
     public function owner()
     {

@@ -1,6 +1,9 @@
 <script>
+    import Favorite from './Favorite.vue';
     export default{
         props:['attributes'],
+
+        components : { Favorite },
 
         data(){
             return{
@@ -23,8 +26,6 @@
                 $(this.$el).fadeOut(300,()=>{
                     flash('Reply has been deleted');
                 });
-
-
 
             }
         }
