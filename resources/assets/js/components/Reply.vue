@@ -10,12 +10,22 @@
         },
         methods: {
             update() {
-                axios.patch('http://127.0.0.1:8000/replies/' + this.attributes.id, {
+                axios.patch('/replies/' + this.attributes.id, {
                     body: this.body
                 });
 
                 this.editing=false;
                 flash('Updated!');
+            },
+            destroy() {
+                axios.delete('/replies/' + this.attributes.id);
+
+                $(this.$el).fadeOut(300,()=>{
+                    flash('Reply has been deleted');
+                });
+
+
+
             }
         }
     }

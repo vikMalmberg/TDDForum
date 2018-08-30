@@ -24,7 +24,7 @@ class RepliesController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return back()->with('flash', 'a b c.');
+        return back()->with('flash', 'Reply Created');
 
     }
 
@@ -34,6 +34,9 @@ class RepliesController extends Controller
 
         $reply->delete();
 
+        if(request()->expectsJson()){
+            return response(["Message => your reply has been deleted"]);
+        }
         return back();
 
     }
