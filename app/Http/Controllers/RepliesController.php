@@ -35,7 +35,7 @@ class RepliesController extends Controller
         $reply->delete();
 
         if(request()->expectsJson()){
-            return response(["Message => your reply has been deleted"]);
+            return response(['status' => 'Reply deleted']);
         }
         return back();
 

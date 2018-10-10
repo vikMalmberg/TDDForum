@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <thread-view  :initial-replies-count ="{{ $thread->replies_count }}" inline-template>
     <div class="container">
         <div class="row ">
             <div class="col-md-8">
@@ -35,9 +35,10 @@
         </div>
            <div class="row ">
             <div class="col-md-8 col-md-offset">
-                @foreach ($thread->replies as $reply)
-                    @include('threads.reply')
-                @endforeach
+
+                <replies :data="{{ $thread->replies }}" @removed="repliesCount--" ></replies>
+
+
                 @if(auth()->check())
                     <div class="row ">
                         <div class="col-md-8 col-md-offset-4 pt-4">
@@ -58,5 +59,6 @@
             </div>
         </div>
     </div>
+    </thread-view>
     @endsection
 

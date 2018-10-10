@@ -2,6 +2,15 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
+Vue.prototype.authorize = function(handler) {
+
+    let user = window.App.user;
+
+    if (! user) return false;
+
+    return handler(window.App.user);
+};
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -34,6 +43,7 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
